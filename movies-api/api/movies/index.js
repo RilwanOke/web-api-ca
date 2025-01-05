@@ -51,6 +51,16 @@ router.get('/tmdb/genres', asyncHandler(async (req, res) => {
     res.status(200).json(genres);
 }));
 
+// Search for movies by title
+router.get('/search', asyncHandler(async (req, res) => {
+    const { title } = req.query;
+    if (!title) {
+        return res.status(400).json({ message: "Title query parameter is required." });
+    }
+    const movies = await movieModel.find({ title: { $regex: title, $options: 'i' } });
+    res.status(200).json(movies);
+}));
+
 
 
 export default router;

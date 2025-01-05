@@ -1,10 +1,12 @@
-const defaultErrHandler = (err, req, res) => {
-    /* if the error in development then send stack trace to display whole error,
-    if it's in production then just send error message  */
-    if(process.env.NODE_ENV === 'production') {
-      return res.status(500).send(`Something went wrong!`);
-    }
-    res.status(500).send(`Hey!! You caught the error 👍👍. Here's the details: ${err.stack} `);
-  };
+// eslint-disable-next-line no-unused-vars
+const defaultErrHandler = (err, req, res, next) => {
+  // Check if in production environment
+  if (process.env.NODE_ENV === 'production') {
+    return res.status(500).send('Something went wrong!');
+  }
 
-  export default defaultErrHandler;
+  // For development, include stack trace
+  res.status(500).send(`Hey!! You caught the error 👍👍. Here's the details: ${err.stack}`);
+};
+
+export default defaultErrHandler;

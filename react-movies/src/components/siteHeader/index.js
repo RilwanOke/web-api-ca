@@ -8,6 +8,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useNavigate } from "react-router-dom";
 import firebaseApp from '../../firebase-config';
 
+
+
 const auth = getAuth(firebaseApp); // Initialize auth here
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);

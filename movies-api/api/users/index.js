@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import asyncHandler from 'express-async-handler';
 
 
-const router = express.Router(); // eslint-disable-line
+const router = express.Router();
 
 // Get all users
 router.get('/', async (req, res) => {
@@ -15,7 +15,6 @@ router.get('/', async (req, res) => {
 //.... code as before
 
 // register(Create)/Authenticate User
-// eslint-disable-next-line no-undef
 router.post('/', asyncHandler(async (req, res) => {
     try {
         if (!req.body.username || !req.body.password) {
