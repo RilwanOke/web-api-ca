@@ -1,25 +1,18 @@
 # Assignment 2 - Web API.
 
-Name: Your Name
+Name: Rilwan Oke
 
 ## Features.
 
-A bullet-point list of the ADDITIONAL features you have implemented in the API **THAT WERE NOT IN THE LABS** (or modifications to existing features)
- 
- + Feature 1 
- + Feature 2 
- + Feature 3 
- + etc
-
+User Authentication: Implemented Firebase Authentication for signup, login, and logout with both Google Auth and email/password.
+Search: Added a search endpoint that allows filtering movies by title, genre, and rating.
+Upcoming Movies Endpoint: A custom endpoint to fetch upcoming movies from TMDB.
+Adjusted the Error Handling
 ## Setup requirements.
 
-[ Outline any non-standard setup steps necessary to run your app locally after cloning the repo.]
+Run Mongod on the terminal.
 
 ## API Configuration
-
-Describe any configuration that needs to take place before running the API. For example, creating an `.env` file and what variables to put in it. Give an example of how this might be done.
-
-REMEMBER: DON'T PUT YOUR OWN USERNAMES/PASSWORDS/AUTH KEYS IN THE README OR ON GITHUB, just placeholders as indicated below:
 
 ______________________
 NODEENV=development
@@ -34,20 +27,29 @@ ______________________
 Give an overview of your web API design, perhaps similar to the following: 
 
 - /api/movies | GET | Gets a list of movies 
-- /api/movies/{movieid} | GET | Gets a single movie 
-- /api/movies/{movieid}/reviews | GET | Get all reviews for movie 
-- /api/movies/{movieid}/reviews | POST | Create a new review for Movie 
+- /api/movies/search | GET | Seraches for movies
+ - /api/movies/upcoming | GET | Retrieves upcoming movies from TMDB.
+- /api/movies/{movieid} | GET | Gets a single movie  
 
-If you have your API design on an online platform or graphic, please link to it (e.g. [Swaggerhub](https://app.swaggerhub.com/)).
 
 ## Security and Authentication
 
-Give details of authentication/security implemented on the API (e.g. passport/sessions). Indicate which routes are protected.
+
+Authentication: The API uses Firebase Authentication for secure access to protected routes. Users can authenticate using Google Auth or email/password.
 
 ## Integrating with React App
 
-Describe how you integrated your React app with the API. List the views that use your Web API instead of the TMDB API. Describe any other updates to the React app from Assignment One.
+The following views in the React app integrate with the custom movie API
+
+Discover Movies: Fetches a  list of movies from /api/movies.
+Search Movies: Allows users to search movies by title, genre, or rating using /api/movies/search.
+
+Favorites Page: Displays user-specific favorite movies by fetching data from /api/movies/favorites.
+
+Upcoming Movies Page: Fetches upcoming movies from /api/movies/upcoming.
+
+Authentication Integration: Users can log in or sign up via the user icon in the header.
 
 ## Independent learning (if relevant)
 
-Briefly explain any non-standard features developed for the app.   
+Firebase Integration: Learned how to integrate Firebase Authentication (Google OAuth and email/password) with both the backend and React app.
