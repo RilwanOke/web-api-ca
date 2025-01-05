@@ -98,21 +98,15 @@ export const getMovie = (args) => {
     });
   };
   
-  export const getUpcomingMovies = () => {
-    return fetch(
-      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
-    ).then((response) => {
-      if (!response.ok) {
-        return response.json().then((error) => {
-          throw new Error(error.status_message || "Something went wrong getting upcoming movies");
-        });
-      }
-      return response.json();
-    })
-    .catch((error) => {
-      throw error;
+  export const getUpcomingMovies = async () => {
+    const response = await fetch(
+        'http://localhost:8080/api/movies/tmdb/upcoming', {
+        headers: {
+            'Authorization': window.localStorage.getItem('token')
+        }
     });
-  };
+    return response.json();
+};
 
   export const getMovieRecommendations = (movieId) => {
     return fetch(
@@ -144,6 +138,17 @@ export const getMovie = (args) => {
       throw error;
     });
   };
+
+  export const searchMovies = async (title) => {
+    const response = await fetch(
+        `http://localhost:8080/api/movies/search?title=${title}`, {
+        headers: {
+            'Authorization': window.localStorage.getItem('token')
+        }
+    });
+    return response.json();
+};
+
   
 
 export const login = async (username, password) => {
